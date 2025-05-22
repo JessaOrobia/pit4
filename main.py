@@ -7,6 +7,13 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="TodoJessa API")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Dependency to get DB session
 def get_db():
     db = SessionLocal()
